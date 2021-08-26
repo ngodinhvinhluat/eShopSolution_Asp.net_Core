@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eShopSolution.Data.EF;
 
 namespace eShopSolution.Data.Migrations
 {
     [DbContext(typeof(EShopDBContext))]
-    partial class EShopDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210826091625_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,22 +109,6 @@ namespace eShopSolution.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            IsShowOnHome = true,
-                            SortOrder = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            IsShowOnHome = true,
-                            SortOrder = 2,
-                            Status = 1
-                        });
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.CategoryTranslation", b =>
@@ -168,48 +154,6 @@ namespace eShopSolution.Data.Migrations
                     b.HasIndex("LanguageID");
 
                     b.ToTable("CategoryTranslations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryID = 1,
-                            LanguageID = "vi-VN",
-                            Name = "Tai nghe",
-                            SeoAlias = "tai-nghe",
-                            SeoDescription = "Tai nghe hiện đại jack kết nối 3.5",
-                            SeoTitle = "Tai nghe hiện đại"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryID = 1,
-                            LanguageID = "en-US",
-                            Name = "Headphone",
-                            SeoAlias = "headphone",
-                            SeoDescription = " Modern headphones with jack connect 3.5",
-                            SeoTitle = "Modern headphone"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryID = 2,
-                            LanguageID = "vi-VN",
-                            Name = "Tai nghe bluetooth",
-                            SeoAlias = "tai-nghe-bluetooth",
-                            SeoDescription = "Tai nghe không dây kết nối thông qua Bluetooth",
-                            SeoTitle = "Tai nghe không dây hiện đại kết nối Blutooth"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryID = 2,
-                            LanguageID = "en-US",
-                            Name = "Bluetooth headphone",
-                            SeoAlias = "bluetooth-headphone",
-                            SeoDescription = "Wireless headphones connected via Bluetooth",
-                            SeoTitle = "Modern wireless Bluetooth headset"
-                        });
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.Contact", b =>
@@ -267,20 +211,6 @@ namespace eShopSolution.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Languages");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = "vi-VN",
-                            IsDefault = true,
-                            Name = "Tiếng Việt"
-                        },
-                        new
-                        {
-                            ID = "en-US",
-                            IsDefault = false,
-                            Name = "English"
-                        });
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.Order", b =>
@@ -295,7 +225,7 @@ namespace eShopSolution.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 8, 26, 16, 43, 54, 643, DateTimeKind.Local).AddTicks(9131));
+                        .HasDefaultValue(new DateTime(2021, 8, 26, 16, 16, 24, 467, DateTimeKind.Local).AddTicks(5446));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -384,17 +314,6 @@ namespace eShopSolution.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            DateCreated = new DateTime(2021, 8, 26, 16, 43, 54, 666, DateTimeKind.Local).AddTicks(4619),
-                            OriginalPrice = 15000m,
-                            Price = 100000m,
-                            Stock = 0,
-                            ViewCount = 0
-                        });
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.ProductInCategory", b =>
@@ -410,13 +329,6 @@ namespace eShopSolution.Data.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("ProductInCategory");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryID = 2,
-                            ProductID = 1
-                        });
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.ProductTranslation", b =>
@@ -467,32 +379,6 @@ namespace eShopSolution.Data.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("ProductTranslations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Tai Nghe Bluetooth TWS VIVAN Liberty T200 - Cảm Ứng - Playtime Đến 22H ",
-                            Detail = "Mua Tai Nghe Bluetooth TWS VIVAN Liberty T200 - Cảm Ứng - Playtime Đến 22H - Chống Nước IPX4 giá tốt. Mua hàng qua mạng uy tín, tiện lợi.",
-                            LanguageID = "vi-VN",
-                            Name = "Tai nghe bluetooth Vivan",
-                            ProductID = 1,
-                            SeoAlias = "tai-nghe-bluetooth-vivan",
-                            SeoDescription = "Tai nghe Bluetooth Vivan hiện đại sạc 2h dùng 6.5h",
-                            SeoTitle = "Tai nghe Bluetooth Vivan hiện đại"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "VIVAN Liberty T200 Bluetooth Headset - Touch - Playtime Up to 22H ",
-                            Detail = "VIVAN Liberty T200 Bluetooth Headset - Touch - Playtime Up to 22H - IPX4 Waterproof at good price. Buy online reputable, convenient.",
-                            LanguageID = "en-US",
-                            Name = "Vivan bluetooth headset",
-                            ProductID = 1,
-                            SeoAlias = "vivan-bluetooth-headset",
-                            SeoDescription = "Modern Vivan Bluetooth headset charges for 2 hours and uses 6.5 hours",
-                            SeoTitle = "Modern Vivan Bluetooth headset"
-                        });
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.Promotion", b =>
