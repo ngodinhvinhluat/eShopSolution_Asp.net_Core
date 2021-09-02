@@ -14,7 +14,7 @@ namespace eShopSolution.Data.Configurations
             builder.ToTable("Orders");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.ID).UseIdentityColumn();
-            builder.Property(x => x.OrderDate).HasDefaultValue(DateTime.Now);
+            
             builder.Property(x => x.ShipEmail).IsUnicode(false).IsRequired().HasMaxLength(50);
             builder.Property(x => x.ShipAddress).IsRequired().HasMaxLength(500);
             builder.Property(x => x.ShipName).IsRequired().HasMaxLength(500);
